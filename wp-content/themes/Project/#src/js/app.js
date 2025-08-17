@@ -8,17 +8,17 @@
 // @@-include('CheckThen/SlideToggle.js', {})
 
 // === components ===
-// @@-include('components/Popups/functions.js', {})
-// @@-include('components/Popups/Cookies.js', {})
+@@include('components/Popups/functions.js', {})
+@@include('components/Popups/Cookies.js', {})
 // @@-include('components/Gallery.js', {})
 // @@-include('components/SearchInList.js', {})
-// @@-include('components/Spollers.js', {})
-// @@-include('components/Swipers.js', {})
+@@include('components/Spollers.js', {})
+@@include('components/Swipers.js', {})
 
 // === functions ===
 // @@-include('functions/BodyLock.js', {})
 // @@-include('functions/Animate.js', {})
-// @@-include('functions/Menu.js', {})
+@@include('functions/Menu.js', {})
 // @@-include('functions/Tabs.js', {})
 
 // === ui-kit ===
@@ -26,7 +26,7 @@
 // @@-include('ui-kit/Quantity.js', {})
 // @@-include('ui-kit/Range.js', {})
 // @@-include('ui-kit/Rating.js', {})
-// @@-include('ui-kit/Select.js', {})
+@@include('ui-kit/Select.js', {})
 
 // === script ===
 @@include('script.js', {})
