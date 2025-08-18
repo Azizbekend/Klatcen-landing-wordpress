@@ -51,6 +51,7 @@ const path = {
 function browserSync(done) {
 	browsersync.init({
 		proxy: {
+			// ! Вставляем ссылку, которая открывает в Open Server
 			target: "http://klatcen-wordpress-test/",
 		},
 		port: 3000, // Порт
@@ -59,6 +60,9 @@ function browserSync(done) {
 		// https: true, // Включить HTTPS
 		open: 'external', // Открывать внешний URL
 		socket: {
+			// ! Здесь чисто домайнс. Штука которая после https.
+			// ! Например: https://klatcen/
+			// ! klatcen - это домен
 			domain: 'klatcen-wordpress-test:3000',
 			secure: true // Для HTTPS
 		}

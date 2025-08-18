@@ -1,0 +1,323 @@
+// === BUTTONS ===
+.button {
+    &-background,
+    &-border {
+        display: block;
+        text-align: center;
+        border-radius: em(16, 7);
+        @include setProp(font-size, 20, 18, 0);
+
+        &._icon {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &-background {
+    }
+
+    &-border {
+    }
+}
+
+// === <SELECT (_select)> ===
+.select {
+    position: relative;
+
+    // .select__item
+    &__item {
+        position: relative;
+    }
+
+    // .select__title
+    &__title {
+        background-color: #fff;
+        cursor: pointer;
+        @include setProp(border-radius, 40, 40, 0);
+
+        @media (max-width: $md2+px) {
+            @include setProp(font-size, 16, 16, 0);
+        }
+    }
+
+    // .select__value
+    &__value {
+        display: flex;
+        @include setProp(font-size, 16, 16, 0);
+
+        @include setProp(height, 56, 56, 0);
+        @include setProp(padding-left, 24, 24, 0);
+        @include setProp(padding-right, 24, 24, 0);
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+
+        span {
+            height: fit-content;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        &:before {
+            content: "";
+            display: inline-block;
+            transition: transform 0.3s ease 0s;
+            @include setProp(width, 16, 16, 0);
+            @include setProp(height, 12, 12, 0);
+            background: url("../img/icons/select.svg") center / 100% no-repeat;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        background-color: transparent;
+        height: 100%;
+    }
+
+    // .select__options
+    &__options {
+        color: #000;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        @include setProp(border-radius, 16, 16, 0);
+        @include setProp(margin-top, 12, 12, 0);
+
+        min-width: 100%;
+        background-color: #fff;
+        border: 1px solid #d9d9d9;
+        @include setProp(padding-top, 14, 4, 0);
+        @include setProp(padding-right, 64, 48, 0);
+        @include setProp(padding-bottom, 14, 4, 0);
+        @include setProp(padding-left, 28, 16, 0);
+        @include setProp(font-size, 16, 16, 0);
+        @include setProp(gap, 14, 14, 0);
+        @include setProp(max-height, 340, 280, 0);
+        overflow-y: auto;
+        scrollbar-width: thin;
+    }
+
+    // .select__option
+    &__option {
+        cursor: pointer;
+        @include setProp(padding-top, 12, 12, 0);
+        @include setProp(padding-bottom, 12, 12, 0);
+        line-height: 140%;
+        transition: color 0.3s;
+        @include setProp(font-size, 16, 16, 0);
+
+        display: flex;
+        flex-direction: column;
+        @include setProp(gap, 2, 2, 0);
+
+        @media (min-width: 992px) {
+            &:hover {
+            }
+        }
+    }
+    &__option-sub {
+        @include setProp(font-size, 14, 14, 0);
+    }
+
+    &._active {
+        z-index: 5;
+
+        .select__value {
+            &:before {
+                transform: rotate(-180deg);
+            }
+        }
+
+        .select__options {
+            display: block;
+        }
+    }
+}
+
+// === Input Text (_input)===
+.input {
+    // input__name
+    &__name {
+        @include setProp(font-size, 16, 16, 0);
+        & span {
+            color: red;
+        }
+    }
+
+    // input__input
+    &__input {
+        display: flex;
+        align-items: center;
+        @include setProp(gap, 10, 10, 0);
+
+        // input__icon input
+        & input {
+            flex: 1 1 auto;
+        }
+    }
+
+    // input__icon
+    &__icon {
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include setProp(width, 10, 10, 0);
+        @include setProp(height, 10, 10, 0);
+        & img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    // input__error3
+    &__error {
+        display: none;
+        color: red;
+        @include setProp(font-size, 12, 12, 0);
+    }
+
+    // .input.__error
+    &._error {
+    }
+
+    // .input._focus
+    &._focus {
+    }
+}
+
+.textarea {
+}
+
+// === Input Checkbox (_checkbox)===
+.checkbox {
+    position: relative;
+
+    // .checkbox__input
+    &__input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+
+        // .checkbox__input:checked + .checkbox__text:before
+        &:checked + .checkbox__text:before {
+            background: #fff url("../img/icons/check.svg") center no-repeat;
+        }
+    }
+
+    // .checkbox__text
+    &__text {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        color: inherit;
+        line-height: calc(20 / 20);
+        cursor: pointer;
+
+        @include setProp(font-size, 16, 16, 0);
+        @include setProp(letter-spacing, -0.3, 0.3, 0);
+
+        // .checkbox__text:before
+        &:before {
+            content: "";
+            align-self: flex-start;
+
+            flex-grow: 0;
+            flex-shrink: 0;
+
+            left: 0;
+            top: 0;
+
+            background: #fff;
+            border: 1px solid #a7a9ac;
+
+            @include setProp(width, 18, 18, 0);
+            @include setProp(height, 18, 18, 0);
+            @include setProp(flex-basis, 18, 18, 0);
+            @include setProp(margin-right, 14, 14, 0);
+        }
+    }
+
+    // checkbox a
+    & a {
+        color: #fff;
+        text-decoration: underline;
+        @media (min-width: $md2+px) {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    // checkbox._error
+    &._error {
+        // checkbox._error .checkbox__text
+        & .checkbox__text {
+            // checkbox._error .checkbox__text:before
+            &:before {
+                border: 1px solid #ee1212;
+            }
+        }
+    }
+}
+
+// === <SCROLL TOP (_scr-top)> ===
+#top {
+    visibility: hidden;
+
+    &:target {
+        scroll-margin-top: 0%;
+    }
+}
+
+.scroll-top-button {
+    z-index: 4;
+    position: fixed;
+    right: 5%;
+    bottom: 7%;
+    border-radius: 100%;
+    background: var(--clr-fon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(40px);
+    transition: all 0.3s ease;
+
+    @include setProp(width, 80, 50, 0);
+    @include setProp(height, 80, 50, 0);
+
+    &._scroll {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    svg {
+        @include setProp(width, 30, 15, 0);
+        @include setProp(height, 30, 15, 0);
+
+        path {
+            stroke: #212121;
+            stroke-width: 4.31px;
+        }
+
+        rect {
+            fill: #212121;
+            width: 4.31px;
+            height: 21px;
+        }
+    }
+
+    @media (min-width: $md2+px) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
