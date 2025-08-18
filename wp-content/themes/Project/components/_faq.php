@@ -1,4 +1,4 @@
-<div class="@@class faq">
+<div class="<?= $class ?> faq">
     <div class="faq__title">Вопросы</div>
 
     <div class="faq__items" data-spollers>
