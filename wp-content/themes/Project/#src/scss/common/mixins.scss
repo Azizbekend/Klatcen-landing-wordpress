@@ -11,18 +11,37 @@
 	}
 }
 //Адаптивное свойство
-@mixin setProp($property, $startSize, $minSize, $type) {
+// @mixin setProp($property, $startSize, $minSize, $type) {
+// 	$addSize: $startSize - $minSize;
+
+// 	@if $type==1 {
+// 		#{$property}: calc(
+// 			#{$minSize / 10}rem + #{$addSize} * ((100vw - #{$minWidth / 10}rem) / #{$maxWidth - $minWidth})
+// 		) !important;
+// 	} @else {
+// 		//Всегда
+// 		#{$property}: calc(
+// 			#{$minSize / 10}rem + #{$addSize} * ((100vw - #{$minWidth / 10}rem) / #{$maxWidth - $minWidth})
+// 		);
+// 	}
+// }
+
+
+// Адаптивное свойство с оптимизацией
+@mixin setProp($property, $startSize, $minSize, $type: 0) {
 	$addSize: $startSize - $minSize;
 
-	@if $type==1 {
-		#{$property}: calc(
-			#{$minSize / 10}rem + #{$addSize} * ((100vw - #{$minWidth / 10}rem) / #{$maxWidth - $minWidth})
-		) !important;
+	$value: #{$minSize / 10}rem;
+
+	@if $addSize != 0 {
+		$value: calc(#{$minSize / 10}rem + #{$addSize} * ((100vw - var(--min-width-point)) / var(--average-point)));
+	}
+
+	// Применяем с учетом important
+	@if $type == 1 {
+		#{$property}: $value !important;
 	} @else {
-		//Всегда
-		#{$property}: calc(
-			#{$minSize / 10}rem + #{$addSize} * ((100vw - #{$minWidth / 10}rem) / #{$maxWidth - $minWidth})
-		);
+		#{$property}: $value;
 	}
 }
 
